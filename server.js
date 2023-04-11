@@ -1,27 +1,20 @@
 const express = require('express');
-const { connect } = require('./connect');
+const cors = require('cors');
 const app = express();
 const PORT = 8080;
+const connect = require('./configs/connect');
 app.use(express.json());
+app.use(cors());
+app.use("/account", require('./routes/account.route'));
+app.use("/products", require('./routes/products.route'));
 
 connect();
 
-app.use("/create", require('./routes/NewUser'));
-app.use("/products", require('./routes/Products'));
 
 app.get('/', (req, res) => {
     res.send("Server running...");
 })
 
-app.get('/users', (req, res) => {
-    res.send(`Hey ${PORT}`);
-})
-
-app.get('/users/:id', (req, res) => {
-    let id = req.params.id;
-    res.send(`Hey ${id}`);
-})
-
 app.listen(PORT, () => {
-    console.log(`Listening at http://localhost:${PORT}`);
+    console.log(`Listening on port ${PORT}...`);
 })

@@ -22,6 +22,15 @@ const UserSchema = new Schema(
         date: {
             type: Date,
             default: Date.now
+        },
+
+        cart: {
+            type: Array,
+            required: true
+        },
+
+        auth_type: {
+            type: String
         }
     }
 )
