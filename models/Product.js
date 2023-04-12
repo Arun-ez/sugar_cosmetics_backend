@@ -38,6 +38,11 @@ const ProductSchema = new Schema(
             required: true
         },
 
+        filter: {
+            type: String,
+            required: true
+        },
+
         rating: {
             type: String,
             required: true
