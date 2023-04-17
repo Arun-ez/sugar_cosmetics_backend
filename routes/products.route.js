@@ -6,7 +6,7 @@ const { getAllProducts, getProductsByCategory, getProductByCategoryAndId, postPr
 router.get('/', async (req, res) => {
     try {
         const response = await getAllProducts();
-        res.json(response);
+        res.send(response);
     } catch (error) {
         res.status(404).send({ error: error.message });
     }
