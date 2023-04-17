@@ -17,6 +17,13 @@ const VerifyToken = (token) => {
 }
 
 const token_validator = async (req, res, next) => {
+
+    const isExist = req.headers.hasOwnProperty("authorization");
+
+    if (!isExist) {
+        return res.status(404).send("Token not found");
+    }
+
     const [type, token] = req.headers.authorization.split(" ");
 
     if (type !== "Bearer") {
