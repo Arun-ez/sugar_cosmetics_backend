@@ -62,6 +62,7 @@ const getProductsByCategory = async (params, query) => {
     try {
         const find = getFindCriteria(params, query);
         const sort = getSortCriteria(query);
+        console.log(find);
         const response = await Product.find(find).sort(sort);
         return { data: response };
     } catch (error) {

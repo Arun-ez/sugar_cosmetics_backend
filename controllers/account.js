@@ -7,8 +7,7 @@ const getUser = async (data) => {
     try {
         const response = await User.findOne({ email: data.email });
         const json = response.toJSON();
-        delete json.password;
-        return { data: json };
+        return { success: { name: json.name, email: json.email } }
     } catch (error) {
         throw new Error(error);
     }
@@ -46,7 +45,7 @@ const loginUser = async (data) => {
         }
 
         const token = CreateToken({ name: data.name, email: data.email });
-        return { success: token }
+        return { success: { name: user.name, email: user.email, token: token } }
 
     } catch (error) {
         throw new Error(error);
