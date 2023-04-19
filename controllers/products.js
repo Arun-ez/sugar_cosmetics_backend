@@ -87,4 +87,13 @@ const postProduct = async (data) => {
     }
 }
 
-module.exports = { getAllProducts, getProductsByCategory, getProductByCategoryAndId, postProduct };
+const searchProducts = async (query) => {
+    try {
+        const response = await Product.find({ $text: { $search: query } })
+        return { data: response };
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getAllProducts, getProductsByCategory, getProductByCategoryAndId, postProduct, searchProducts };

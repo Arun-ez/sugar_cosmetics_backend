@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllProducts, getProductsByCategory, getProductByCategoryAndId, postProduct } = require('../controllers/products');
+const { getAllProducts, getProductsByCategory, getProductByCategoryAndId, postProduct, searchProducts } = require('../controllers/products');
 
 
 router.get('/', async (req, res) => {
@@ -11,6 +11,16 @@ router.get('/', async (req, res) => {
         res.status(404).send({ error: error.message });
     }
 })
+
+router.get('/search/:query', async (req, res) => {
+    try {
+        const response = await searchProducts(req.params.query);
+        res.send(response);
+    } catch (error) {
+        res.status(404).send({ error: error.message });
+    }
+})
+
 
 router.get('/:category', async (req, res) => {
     try {
