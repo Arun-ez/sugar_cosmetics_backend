@@ -96,4 +96,13 @@ const deleteCartData = async (data, params) => {
     }
 }
 
-module.exports = { getCartData, postCartData, patchCartData, deleteCartData }
+const clearCartData = async (data) => {
+    try {
+        let cart_response = await User.updateOne({ email: data.email }, { $set: { cart: [] } });
+        return { success: "cleared" }
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getCartData, postCartData, patchCartData, deleteCartData, clearCartData }

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { token_validator } = require('../middlewares/token_validator');
-const { getCartData, postCartData, patchCartData, deleteCartData } = require('../controllers/cart');
+const { getCartData, postCartData, patchCartData, deleteCartData, clearCartData } = require('../controllers/cart');
 
 router.get('/', token_validator, async (req, res) => {
     try {
@@ -41,6 +41,14 @@ router.delete('/:id', token_validator, async (req, res) => {
     }
 })
 
+router.delete('/clear/all', token_validator, async (req, res) => {
+    try {
+        let response = await clearCartData(req.data);
+        res.send(response);
+    } catch (error) {
+        res.status(404).send({ error: error.messag });
+    }
+})
 
 
 module.exports = router;
