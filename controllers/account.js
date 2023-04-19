@@ -52,4 +52,20 @@ const loginUser = async (data) => {
     }
 }
 
-module.exports = { getUser, registerUser, loginUser };
+const checkDataExistancy = async (data) => {
+    try {
+
+        let user = await User.findOne({ email: data.email });
+
+        if (!user) {
+            return { result: false }
+        } else {
+            return { result: true }
+        }
+
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getUser, registerUser, loginUser, checkDataExistancy };

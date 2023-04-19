@@ -89,7 +89,7 @@ const deleteCartData = async (data, params) => {
     try {
         let cart_data = await getCartData(data);
         let new_data = delete_cart_data_handler(cart_data.data, params.id);
-        let cart_response = await User.updateOne({ email: data.email }, { $set: { cart: [] } });
+        let cart_response = await User.updateOne({ email: data.email }, { $set: { cart: new_data } });
         return { success: cart_response }
     } catch (error) {
         throw new Error(error);
