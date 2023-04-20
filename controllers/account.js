@@ -1,4 +1,4 @@
-
+const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const { CreateToken } = require('../middlewares/token_validator');
 
@@ -14,21 +14,25 @@ const getUser = async (data) => {
 }
 
 const registerUser = async (data) => {
-
+    const salt = 10;
     const response = await User.findOne({ email: data.email });
 
     if (response) {
         throw new Error('Account already exist');
     }
 
-    try {
-        const response = await User.create({ ...data, cart: [], auth_type: "native" });
-        const json = response.toJSON();
-        delete json.password;
-        return { created: json };
-    } catch (error) {
-        throw new Error(error);
-    }
+    return new Promise((resolve, reject) => {
+        bcrypt.hash(data.password, salt, async (err, hashed) => {
+            try {
+                const response = await User.create({ ...data, password: hashed, cart: [], auth_type: "native" });
+                const json = response.toJSON();
+                delete json.password;
+                resolve({ created: json });
+            } catch (error) {
+                reject(error);
+            }
+        })
+    })
 }
 
 const loginUser = async (data) => {
@@ -40,12 +44,16 @@ const loginUser = async (data) => {
             throw new Error('Data not found');
         }
 
-        if (data.password !== user.password) {
-            return { failed: "Wrong password" }
-        }
-
-        const token = CreateToken({ name: data.name, email: data.email });
-        return { success: { name: user.name, email: user.email, token: token } }
+        return new Promise((resolve, reject) => {
+            bcrypt.compare(data.password, user.password, (err, isValid) => {
+                if (isValid === true) {
+                    const token = CreateToken({ name: data.name, email: data.email });
+                    resolve({ success: { name: user.name, email: user.email, token: token } })
+                } else {
+                    reject({ message: "Wrong password" })
+                }
+            })
+        })
 
     } catch (error) {
         throw new Error(error);
