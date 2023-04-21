@@ -6,9 +6,9 @@ const connect = require('./configs/connect');
 
 app.use(express.json());
 app.use(cors());
-app.use("/account", require('./routes/account.route'));
-app.use("/products", require('./routes/products.route'));
-app.use("/cart", require('./routes/cart.route'));
+app.use("/api/account", require('./routes/account.route'));
+app.use("/api/products", require('./routes/products.route'));
+app.use("/api/cart", require('./routes/cart.route'));
 
 connect();
 
