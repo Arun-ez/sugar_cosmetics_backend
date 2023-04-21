@@ -4,7 +4,7 @@
 
 #### Get all Products
 
-```http
+```bash
   GET /api/products
 ```
 
@@ -14,7 +14,7 @@
 
 #### Get Products by category
 
-```http
+```bash
   GET /api/products/${category}
 ```
 
@@ -24,7 +24,7 @@
 
 #### Get Single Product by Id
 
-```http
+```bash
   GET /api/products/${category}/${Id}
 ```
 
@@ -35,7 +35,7 @@
 
 #### Sort Products
 
-```http
+```bash
   GET /api/products/${category}?sort=price&order=asc
   GET /api/products/${category}?sort=price&order=dsc
 ```
@@ -47,7 +47,7 @@
 
 #### Filter Products
 
-```http
+```bash
   GET /api/products/${category}?filter=Matte
   GET /api/products/${category}?filter=Matte&filter=liner
 ```
@@ -58,7 +58,7 @@
 
 #### Search Products
 
-```http
+```bash
   GET /api/products/Search/${query}
 ```
 | Parameter | Type     | Description                       |
@@ -67,7 +67,7 @@
 
 #### Register new account
 
-```http
+```bash
   POST /api/account/register
 ```
 | Required | Type     | Description                       |
@@ -76,7 +76,7 @@
 
 #### Login to an account
 
-```http
+```bash
   POST /api/account/login
 ```
 | Required | Type     | Description                       |
@@ -92,7 +92,7 @@
 ```
 #### Login to an account by token
 
-```http
+```bash
   POST /api/account/token
 ```
 | Required | Type     | Description                       |
@@ -114,7 +114,7 @@
 
 #### Post a Product to cart
 
-```http
+```bash
   POST /api/cart
 ```
 
@@ -125,7 +125,7 @@
 
 #### Get All cart data of a single user
 
-```http
+```bash
   GET /api/cart
 ```
 
@@ -135,7 +135,7 @@
 
 #### Patch single Product from cart data of a single user
 
-```http
+```bash
   PATCH /api/cart/${Id}
 ```
 
@@ -146,7 +146,7 @@
 
 #### Delete single Product from cart data of a single user
 
-```http
+```bash
   DELETE /api/cart/${Id}
 ```
 
@@ -157,7 +157,7 @@
 
 #### Erase all cart data of a single user
 
-```http
+```bash
   DELETE /api/cart/clear/all
 ```
 | Required | Type     | Description                       |
