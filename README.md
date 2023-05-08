@@ -186,7 +186,7 @@
 | `body`| `json` | **body** should have the product |
 | `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
 
-#### Get All wishlist data of a single user
+#### Get All wishlist data of a user
 
 ```bash
   GET /api/wishlist
@@ -196,7 +196,7 @@
 | :-------- | :------- | :-------------------------------- |
 | `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
 
-#### Check existancy on product in wishlist
+#### Check existancy of a product in wishlist
 
 ```bash
   GET /api/wishlist/exist/${Id}
@@ -207,7 +207,7 @@
 | `Id`| `string` | **Required**. Product Id to delete |
 | `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
 
-#### Delete single Product from wishlist data of a single user
+#### Delete single Product from wishlist data of user
 
 ```bash
   DELETE /api/wishlist/${Id}
