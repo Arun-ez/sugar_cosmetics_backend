@@ -26,7 +26,12 @@ const UserSchema = new Schema(
 
         cart: {
             type: Array,
-            required: true
+            default: []
+        },
+
+        wishlist: {
+            type: Array,
+            default: []
         },
 
         auth_type: {

@@ -21,7 +21,6 @@ router.get('/search/:query', async (req, res) => {
     }
 })
 
-
 router.get('/:category', async (req, res) => {
     try {
         const response = await getProductsByCategory(req.params, req.query);
@@ -39,7 +38,6 @@ router.get('/:category/:id', async (req, res) => {
         res.status(404).send({ error: error.message })
     }
 })
-
 
 router.post('/', async (req, res) => {
     try {
