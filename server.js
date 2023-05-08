@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 8080;
 const connect = require('./configs/connect');
-
+app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
 app.use("/api/account", require('./routes/account.route'));
@@ -13,9 +13,8 @@ app.use("/api/wishlist", require('./routes/wishlist.route'));
 
 connect();
 
-
 app.get('/', (req, res) => {
-    res.send("Server running...");
+    res.sendFile('index.html');
 })
 
 app.listen(PORT, () => {

@@ -43,7 +43,6 @@ const postWishlistData = async (data, body) => {
 
 const delete_wishlist_data_handler = (wishlist, id) => {
 
-    console.log(id)
     let new_data = wishlist.filter((elm) => {
         return elm._id !== id;
     }) || [];

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Sugar Cosemtics - Backend </title>
+    <script src="https://kit.fontawesome.com/5fc882c95a.js"> </script>
+    <style>
+        * {
+            font-family: system-ui;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .logo {
+            background-color: black;
+            padding: 40px 0px 40px 0px;
+            width: 100%;
+        }
+
+        .logo img {
+            width: 20%;
+            min-width: 160px;
+            margin: auto;
+            display: block;
+        }
+
+        .author {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .author>div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f2f2f2;
+            border-radius: 15px;
+            padding: 5px 10px 5px 10px;
+            transition: all 0.5s;
+        }
+
+        .author>div>a {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .author>div:hover {
+            transform: scale(1.05);
+        }
+
+        .heading {
+            border-bottom: 1px dashed #e0e0e0;
+            padding-bottom: 10px;
+            padding-top: 20px;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            width: 96%;
+            margin-top: 30px;
+            background-color: #f2f2f2;
+            border-radius: 15px;
+            padding-bottom: 30px;
+        }
+
+        .details h2 {
+            text-align: center;
+            width: 100%;
+        }
+
+        .routes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .grid-item {
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        .grid-item h4 {
+            margin: 0;
+        }
+
+        .grid-item p {
+            margin: 0;
+            margin-top: 5px;
+            font-size: 13px;
+            opacity: 80%;
+        }
+
+        .footer {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .footer img {
+            width: 20%;
+            min-width: 160px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer p {
+            color: white;
+            font-size: 13px;
+            opacity: 70%;
+        }
+
+        @media all and (min-width:500px) and (max-width:1000px) {
+            .author {
+                width: 96%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media all and (min-width:0px) and (max-width:500px) {
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .author {
+                width: 96%;
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .author>div {
+                justify-content: flex-start;
+                padding-left: 20px;
+            }
+        }
+
+        @media all and (min-width:900px) and (max-width:1500px) {
+            .routes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer p {
+                font-size: 12px;
+            }
+
+        }
+
+        @media all and (min-width:0px) and (max-width:900px) {
+            .routes {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .footer p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="logo">
+        </div>
+
+        <h1> Server in running ... </h1>
+
+        <b> Created by @Arun-ez </b>
+
+        <div class="author">
+            <div class="github">
+                <a href="https://github.com/Arun-ez" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                    <p> Arun-ez </p>
+                </a>
+
+            </div>
+
+            <div class="linkedIn">
+                <a href="https://www.linkedin.com/in/arun-shaw-60ba64240/" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <p> Arun Shaw </p>
+                </a>
+            </div>
+
+            <div class="website">
+                <a href="https://arunshaw.vercel.app/" target="_blank">
+                    <i class="fa-solid fa-mitten"></i>
+                    <p> Website </p>
+                </a>
+            </div>
+
+            <div class="email">
+                <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=arunshaw433%40gmail.com"
+                    target="_blank">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p> arunshaw433@gmail.com </p>
+                </a>
+            </div>
+        </div>
+
+        <h2 class="heading"> API References </h2>
+
+        <div class="details">
+
+            <h2> Products </h2>
+
+            <div class="routes">
+
+                <div class="grid-item">
+                    <h4> GET /api/products </h4>
+                    <p> Get all Products </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/products/${category} </h4>
+                    <p> Get Products by category </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/products/${category}/${Id} </h4>
+                    <p> Get Single Product by Id </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/products/${category}?sort=price&order=asc </h4>
+                    <p> Sort Products Ascending(asc) or Decending(dsc) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/products/${category}?filter=Matte </h4>
+                    <p> Filter Products </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> Search Products </h4>
+                    <p> GET /api/products/Search/${query} </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="details">
+            <h2> Account and Authorization </h2>
+
+            <div class="routes">
+                <div class="grid-item">
+                    <h4> POST /api/account/register </h4>
+                    <p> Register new account </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> POST /api/account/login </h4>
+                    <p> Login to an account </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> POST /api/account/token </h4>
+                    <p> Login to an account by token ( required authorization header with bearer token ) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> POST /api/account/exist </h4>
+                    <p> Check a user exist or not </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="details">
+            <h2> Cart </h2>
+
+            <div class="routes">
+                <div class="grid-item">
+                    <h4> POST /api/cart </h4>
+                    <p> Post a Product to cart ( required authorization header with bearer token ) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/cart </h4>
+                    <p> Get All cart data of a user ( required authorization header with bearer token ) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> PATCH /api/cart/${Id} </h4>
+                    <p> Patch single Product from cart data </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> DELETE /api/cart/${Id} </h4>
+                    <p> Delete single Product from cart data ( required authorization header with bearer token ) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> DELETE /api/cart/clear/all </h4>
+                    <p> Erase all cart data of a user ( required authorization header with bearer token ) </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="details">
+            <h2> Wishlist </h2>
+
+            <div class="routes">
+                <div class="grid-item">
+                    <h4> POST /api/wishlist </h4>
+                    <p> Post a Product to wishlist ( required authorization header with bearer token ) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/wishlist </h4>
+                    <p> Get All wishlist data of a user ( required authorization header with bearer token ) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> DELETE /api/wishlist/${Id} </h4>
+                    <p> Delete single Product from wishlist data ( required authorization header with bearer token )
+                    </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> DELETE /api/wishlist/exist/${id} </h4>
+                    <p> Check a product exist in wishlist or not ( required authorization header with bearer token )
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <img src="arun.png" alt="arun">
+        <p> @2023 Arun Shaw | All Rights Reserved </p>
+    </div>
+
+</body>
+
+</html>
