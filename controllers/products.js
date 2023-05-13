@@ -2,9 +2,9 @@
 const Product = require('../models/Product');
 const User = require('../models/User');
 
-const getAllProducts = async () => {
+const getAllProducts = async (limit) => {
     try {
-        const response = await Product.find();
+        const response = await Product.find().limit(limit);
         return { data: response };
     } catch (error) {
         throw new Error(error);

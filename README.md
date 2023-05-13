@@ -12,6 +12,16 @@
 | :-------- | :------- | :------------------------- |
 | `N/A` | `N/A` |   `N/A` |
 
+#### Limit number of Products
+
+```bash
+  GET /api/products?limit=10
+```
+
+| query | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `limit` | `number` |   `limit number of response` |
+
 #### Get Products by category
 
 ```bash

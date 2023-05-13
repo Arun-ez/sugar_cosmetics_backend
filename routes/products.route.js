@@ -4,8 +4,9 @@ const { getAllProducts, getProductsByCategory, getProductByCategoryAndId, postPr
 
 
 router.get('/', async (req, res) => {
+    console.log()
     try {
-        const response = await getAllProducts();
+        const response = await getAllProducts(req.query.limit);
         res.send(response);
     } catch (error) {
         res.status(404).send({ error: error.message });
