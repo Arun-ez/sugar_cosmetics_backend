@@ -3,7 +3,7 @@ const User = require('../models/User');
 const getOrdersData = async (data) => {
     try {
         let response = await User.findOne({ email: data.email });
-        return { data: response.orders }
+        return { data: response.orders.reverse() }
     } catch (error) {
         throw new Error(error);
     }

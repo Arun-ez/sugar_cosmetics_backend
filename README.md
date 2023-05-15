@@ -1,5 +1,11 @@
 # sugar_cosmetics_backend
 
+
+## Tech Stack
+
+- Node JS, Express JS, MongoDB, JWT, Razorpay API
+
+
 ## API Reference
 
 #### Get all Products
@@ -227,3 +233,78 @@
 | :-------- | :------- | :-------------------------------- |
 | `Id`| `string` | **Required**. Product Id to delete |
 | `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
+
+
+#### Create a new order
+
+```bash
+  POST /api/order
+```
+
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `body`| `json` | **body** should have the fields {orderId, amount, created, delivery, status, products} |
+| `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
+
+#### Get All orders data of a user
+
+```bash
+  GET /api/order
+```
+
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
+
+#### Create a new payment
+
+```bash
+  POST /api/payment/create
+```
+
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `body`| `json` | **body** should have the fields {amount} |
+
+#### Verify Payment signature
+
+```bash
+  GET /api/payment/verify
+```
+
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `body`| `json` | **body** should have the fields  { razorpay_order_id, razorpay_payment_id, razorpay_signature } |
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`JWT_SECRET_KEY` - Json web token secret key(any)
+MONGO_URI - MongoDB connection string
+KEY_ID - Razorpay key_id
+KEY_SECRET - Razorpay key_secret
+
+
+## Run Locally
+
+Clone the project
+
+```  git clone https://github.com/Arun-ez/sugar_cosmetics_backend.git  ```
+
+```  npm i ```
+
+```  npm start ```
+
+## Author [ Arun Shaw ]
+- [Github - arun-ez](https://github.com/Arun-ez)
+- [LinkedIn - Arun Shaw](https://www.linkedin.com/in/arun-shaw-60ba64240/)
+- [Website - Arun Shaw](https://arunshaw.vercel.app/)
+
+
+## Support
+
+For support, email arunshaw433@gmail.com
+
+
+
