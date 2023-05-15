@@ -10,6 +10,8 @@ app.use("/api/account", require('./routes/account.route'));
 app.use("/api/products", require('./routes/products.route'));
 app.use("/api/cart", require('./routes/cart.route'));
 app.use("/api/wishlist", require('./routes/wishlist.route'));
+app.use("/api/payment", require('./routes/payment.route'));
+app.use("/api/order", require('./routes/order.route'));
 
 connect();
 

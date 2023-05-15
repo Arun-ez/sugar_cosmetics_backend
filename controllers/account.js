@@ -24,7 +24,7 @@ const registerUser = async (data) => {
     return new Promise((resolve, reject) => {
         bcrypt.hash(data.password, salt, async (err, hashed) => {
             try {
-                const response = await User.create({ ...data, password: hashed, cart: [], auth_type: "native" });
+                const response = await User.create({ ...data, password: hashed, auth_type: "native" });
                 const json = response.toJSON();
                 delete json.password;
                 resolve({ created: json });

@@ -36,6 +36,11 @@ const UserSchema = new Schema(
 
         auth_type: {
             type: String
+        },
+
+        orders: {
+            type: Array,
+            default: []
         }
     }
 )
