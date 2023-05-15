@@ -281,9 +281,9 @@
 To run this project, you will need to add the following environment variables to your .env file
 
 `JWT_SECRET_KEY` - Json web token secret key(any)
-MONGO_URI - MongoDB connection string
-KEY_ID - Razorpay key_id
-KEY_SECRET - Razorpay key_secret
+`MONGO_URI` - MongoDB connection string
+`KEY_ID` - Razorpay key_id
+`KEY_SECRET` - Razorpay key_secret
 
 
 ## Run Locally
