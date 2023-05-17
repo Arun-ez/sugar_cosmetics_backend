@@ -41,6 +41,11 @@ const UserSchema = new Schema(
         orders: {
             type: Array,
             default: []
+        },
+
+        addresses: {
+            type: Array,
+            default: []
         }
     }
 )

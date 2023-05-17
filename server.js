@@ -12,6 +12,7 @@ app.use("/api/cart", require('./routes/cart.route'));
 app.use("/api/wishlist", require('./routes/wishlist.route'));
 app.use("/api/payment", require('./routes/payment.route'));
 app.use("/api/order", require('./routes/order.route'));
+app.use("/api/address", require('./routes/address.route'));
 
 connect();
 
