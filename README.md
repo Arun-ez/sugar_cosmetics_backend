@@ -138,7 +138,7 @@
 | `body`| `json` | **body** should have the properties { email } |
 
 
-#### Post a Product to cart
+#### Post a Product to cart data of a user
 
 ```bash
   POST /api/cart
@@ -149,7 +149,7 @@
 | `body`| `json` | **body** should have the product |
 | `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
 
-#### Get All cart data of a single user
+#### Get All cart data of a user
 
 ```bash
   GET /api/cart
@@ -159,7 +159,7 @@
 | :-------- | :------- | :-------------------------------- |
 | `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
 
-#### Patch single Product from cart data of a single user
+#### Patch a single Product from cart data of a user
 
 ```bash
   PATCH /api/cart/${Id}
@@ -170,7 +170,7 @@
 | `Id`| `string` | **Required**. Product Id to patch |
 | `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
 
-#### Delete single Product from cart data of a single user
+#### Delete a single Product from cart data of a user
 
 ```bash
   DELETE /api/cart/${Id}
@@ -181,7 +181,7 @@
 | `Id`| `string` | **Required**. Product Id to delete |
 | `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
 
-#### Erase all cart data of a single user
+#### Erase all cart data of a user
 
 ```bash
   DELETE /api/cart/clear/all
@@ -227,6 +227,49 @@
 
 ```bash
   DELETE /api/wishlist/${Id}
+```
+
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `Id`| `string` | **Required**. Product Id to delete |
+| `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
+
+#### Post an Address to address data of a user
+
+```bash
+  POST /api/address
+```
+
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `body`| `json` | **body** should have the fields {name, number, flatno, locality, pincode, city, state} |
+| `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
+
+#### Get All address data of a user
+
+```bash
+  GET /api/address
+```
+
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
+
+#### Patch a single Address from address data of a user
+
+```bash
+  PATCH /api/address/${Id}
+```
+
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `Id`| `string` | **Required**. Address Id to patch |
+| `authorization header`| `object` | authorization header should have token type as Bearer and a token separated by a space in a single string |
+
+#### Delete a single Address from address data of a user
+
+```bash
+  DELETE /api/address/${Id}
 ```
 
 | Required | Type     | Description                       |

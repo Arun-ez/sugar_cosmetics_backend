@@ -305,7 +305,7 @@
             <div class="routes">
                 <div class="grid-item">
                     <h4> POST /api/cart </h4>
-                    <p> Post a Product to cart ( required authorization header with bearer token ) </p>
+                    <p> Post a Product to cart data of a user ( required authorization header with bearer token ) </p>
                 </div>
 
                 <div class="grid-item">
@@ -315,12 +315,14 @@
 
                 <div class="grid-item">
                     <h4> PATCH /api/cart/${Id} </h4>
-                    <p> Patch single Product from cart data </p>
+                    <p> Patch a single Product from cart data of a user ( required authorization header with bearer
+                        token ) </p>
                 </div>
 
                 <div class="grid-item">
                     <h4> DELETE /api/cart/${Id} </h4>
-                    <p> Delete single Product from cart data ( required authorization header with bearer token ) </p>
+                    <p> Delete a single Product from cart data of a user ( required authorization header with bearer
+                        token ) </p>
                 </div>
 
                 <div class="grid-item">
@@ -359,6 +361,35 @@
 
         </div>
 
+        <div class="details">
+            <h2> Address </h2>
+
+            <div class="routes">
+                <div class="grid-item">
+                    <h4> POST /api/address </h4>
+                    <p> Post address data of a user ( required authorization header with bearer token, required fields
+                        in request body {name, number, flatno, locality, pincode, city, state} ) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/address </h4>
+                    <p> Get All address data of a user ( required authorization header with bearer token ) </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> PATCH /api/address/${Id} </h4>
+                    <p> Patch a single address from address data ( required authorization header with bearer token )
+                    </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> DELETE /api/address/${Id} </h4>
+                    <p> Delete a single address from address data ( required authorization header with bearer token )
+                    </p>
+                </div>
+            </div>
+        </div>
+
 
         <div class="details">
             <h2> Order </h2>
@@ -390,12 +421,14 @@
 
                 <div class="grid-item">
                     <h4> POST /api/payment/verify </h4>
-                    <p> Verify Payment status ( required fields in request body { razorpay_order_id,
+                    <p> Verify Payment signature ( required fields in request body { razorpay_order_id,
                         razorpay_payment_id, razorpay_signature } ) </p>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 
     <div class="footer">
