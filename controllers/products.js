@@ -11,6 +11,24 @@ const getAllProducts = async (limit) => {
     }
 }
 
+const postProduct = async (data) => {
+    try {
+        const response = await Product.create(data);
+        return response;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+const patchProduct = async (data, id) => {
+    try {
+        const response = await Product.updateOne({ _id: id }, { $set: { ...data } });
+        return response;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 const getFindCriteria = (params, query) => {
     let criteria = { category: params.category }
 
@@ -79,15 +97,6 @@ const getProductByCategoryAndId = async (category, id) => {
     }
 }
 
-const postProduct = async (data) => {
-    try {
-        const response = await Product.create(data);
-        return response
-    } catch (error) {
-        throw new Error(error);
-    }
-}
-
 const searchProducts = async (query) => {
     try {
         const response = await Product.find({ $text: { $search: query } })
@@ -97,4 +106,4 @@ const searchProducts = async (query) => {
     }
 }
 
-module.exports = { getAllProducts, getProductsByCategory, getProductByCategoryAndId, postProduct, searchProducts };
+module.exports = { postProduct, patchProduct, getAllProducts, getProductsByCategory, getProductByCategoryAndId, searchProducts };

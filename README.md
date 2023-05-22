@@ -28,6 +28,30 @@
 | :-------- | :------- | :------------------------- |
 | `limit` | `number` |   `limit number of response` |
 
+
+#### Post a product
+
+```bash
+  POST /api/products?API_KEY=***
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `API_KEY` | `string` |   `API_KEY is Required for this route(contact arunshaw433@gmail.com)` |
+
+
+#### Patch a product
+
+```bash
+  PATCH /api/products?id=***&API_KEY=***id=***
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` |   `id is required to patch` |
+| `API_KEY` | `string` |   `API_KEY is Required for this route(contact arunshaw433@gmail.com)` |
+
+
 #### Get Products by category
 
 ```bash
