@@ -15,12 +15,12 @@ const ProductSchema = new Schema(
 
         isListed: {
             type: Boolean,
-            required: true
+            default: false
         },
 
         Description: {
             type: String,
-            required: true
+            default: ""
         },
 
         Price: {
@@ -30,12 +30,11 @@ const ProductSchema = new Schema(
 
         items: {
             type: String,
-            required: true
+            default: ""
         },
 
         brandcolor: {
             type: String,
-            required: true
         },
 
         filter: {
@@ -70,7 +69,7 @@ const ProductSchema = new Schema(
 
         qty: {
             type: Number,
-            required: true
+            default: 0
         }
     }
 )
