@@ -8,6 +8,11 @@ const ProductSchema = new Schema(
             required: true
         },
 
+        Title_URL: {
+            type: String,
+            required: true
+        },
+
         images: {
             type: Array,
             required: true
