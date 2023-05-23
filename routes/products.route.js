@@ -53,9 +53,9 @@ router.patch('/', async (req, res) => {
     }
 })
 
-router.get('/search/:query', async (req, res) => {
+router.get('/search', async (req, res) => {
     try {
-        const response = await searchProducts(req.params.query);
+        const response = await searchProducts(req.query);
         res.send(response);
     } catch (error) {
         res.status(404).send({ error: error.message });

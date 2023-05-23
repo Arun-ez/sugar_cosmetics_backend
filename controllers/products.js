@@ -97,9 +97,36 @@ const getProductByCategoryAndId = async (category, id) => {
     }
 }
 
+const searchCriteria = (query) => {
+    let criteria = { $text: { $search: query.q } }
+
+    if (query.filter) {
+
+        if (typeof query.filter === "string") {
+            criteria = { ...criteria, filter: query.filter }
+        } else {
+            let arr = query.filter.map((filter) => {
+                return { filter };
+            })
+
+            criteria = { ...criteria, $and: arr }
+        }
+    }
+
+    return criteria;
+}
+
 const searchProducts = async (query) => {
+
+    const sort_criteria = {
+        asc: { price: 1 },
+        dsc: { price: -1 }
+    }
+
+    const find_criteria = searchCriteria(query);
+
     try {
-        const response = await Product.find({ $text: { $search: query } })
+        const response = await Product.find(find_criteria).sort(sort_criteria[query.sort] || {})
         return { data: response };
     } catch (error) {
         throw new Error(error);
