@@ -62,7 +62,7 @@ const ProductSchema = new Schema(
             required: true
         },
 
-        benifits: {
+        benifts: {
             type: Array,
             required: true
         },
