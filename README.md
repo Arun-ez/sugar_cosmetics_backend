@@ -99,11 +99,31 @@
 #### Search Products
 
 ```bash
-  GET /api/products/Search/${query}
+  GET /api/products/Search?q=${query}
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `query`| `string` | **Required**. query value to fetch |
+
+#### Sort Search Results
+
+```bash
+  GET /api/products/Search?q=${query}&sort=asc/dsc
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `query`| `string` | **Required**. query value to fetch |
+| `sort`| `string` | **Required**. sort value to fetch |
+
+#### Filter Search Results
+
+```bash
+  GET /api/products/Search?q=${query}&filter=***&filter=***
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `query`| `string` | **Required**. query value to fetch |
+| `filter`| `string` | **Required**. filter value value should be same as products filter value |
 
 #### Register new account
 

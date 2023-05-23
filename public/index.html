@@ -277,8 +277,18 @@
                 </div>
 
                 <div class="grid-item">
-                    <h4> Search Products </h4>
-                    <p> GET /api/products/Search/${query} </p>
+                    <h4> GET /api/products/Search?q=${query} </h4>
+                    <p> Search Products </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/products/Search?q=${query}&sort=asc/dsc </h4>
+                    <p> Sort Search Results based on price </p>
+                </div>
+
+                <div class="grid-item">
+                    <h4> GET /api/products/Search?filter=***&filter=*** </h4>
+                    <p> Filter search results </p>
                 </div>
 
             </div>
