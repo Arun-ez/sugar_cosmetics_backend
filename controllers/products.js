@@ -109,7 +109,7 @@ const searchCriteria = (query) => {
                 return { filter };
             })
 
-            criteria = { ...criteria, $and: arr }
+            criteria = { ...criteria, $or: arr }
         }
     }
 
