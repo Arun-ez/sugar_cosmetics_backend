@@ -147,7 +147,7 @@ const getProductsProgress = async () => {
         let newly = await Product.count({ category: "new" });
 
         const data = [
-            { name: "All", items: all, progress: 100 },
+            { name: "All", items: all, progress: 100, path: "/collections" },
             { name: "Lips", items: lips, progress: Math.round((lips * 100) / all), path: "/collections/lips" },
             { name: "Eyes", items: eyes, progress: Math.round((eyes * 100) / all), path: "/collections/eyes" },
             { name: "Face", items: face, progress: Math.round((face * 100) / all), path: "/collections/face" },
