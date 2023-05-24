@@ -133,4 +133,36 @@ const searchProducts = async (query) => {
     }
 }
 
-module.exports = { postProduct, patchProduct, getAllProducts, getProductsByCategory, getProductByCategoryAndId, searchProducts };
+const getProductsProgress = async () => {
+    try {
+        let all = await Product.count({});
+        let lips = await Product.count({ category: "lips" });
+        let eyes = await Product.count({ category: "eyes" });
+        let face = await Product.count({ category: "face" });
+        let nails = await Product.count({ category: "nails" });
+        let skincare = await Product.count({ category: "skincare" });
+        let accessories = await Product.count({ category: "accessories" });
+        let kits = await Product.count({ category: "kit" });
+        let seller = await Product.count({ category: "seller" });
+        let newly = await Product.count({ category: "new" });
+
+        const data = [
+            { name: "All", items: all, progress: 100 },
+            { name: "Lips", items: lips, progress: Math.round((lips * 100) / all), path: "/collections/lips" },
+            { name: "Eyes", items: eyes, progress: Math.round((eyes * 100) / all), path: "/collections/eyes" },
+            { name: "Face", items: face, progress: Math.round((face * 100) / all), path: "/collections/face" },
+            { name: "Nails", items: nails, progress: Math.round((nails * 100) / all), path: "/collections/nails" },
+            { name: "Skincare", items: skincare, progress: Math.round((skincare * 100) / all), path: "/collections/skincare" },
+            { name: "Accessories", items: accessories, progress: Math.round((accessories * 100) / all), path: "/collections/accessories" },
+            { name: "Gifts And Kits", items: kits, progress: Math.round((kits * 100) / all), path: "/collections/kits" },
+            { name: "Best Seller", items: seller, progress: Math.round((seller * 100) / all), path: "/collections/seller" },
+            { name: "New Launches", items: newly, progress: Math.round((newly * 100) / all), path: "/collections/new" },
+        ]
+
+        return { data }
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { postProduct, patchProduct, getAllProducts, getProductsByCategory, getProductByCategoryAndId, searchProducts, getProductsProgress };

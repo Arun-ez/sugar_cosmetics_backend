@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { postProduct, patchProduct, getAllProducts, getProductsByCategory, getProductByCategoryAndId, searchProducts } = require('../controllers/products');
+const { postProduct, patchProduct, getAllProducts, getProductsByCategory, getProductByCategoryAndId, searchProducts, getProductsProgress } = require('../controllers/products');
 
 
 router.get('/', async (req, res) => {
@@ -56,6 +56,15 @@ router.patch('/', async (req, res) => {
 router.get('/search', async (req, res) => {
     try {
         const response = await searchProducts(req.query);
+        res.send(response);
+    } catch (error) {
+        res.status(404).send({ error: error.message });
+    }
+})
+
+router.get('/progress', async (req, res) => {
+    try {
+        const response = await getProductsProgress();
         res.send(response);
     } catch (error) {
         res.status(404).send({ error: error.message });
