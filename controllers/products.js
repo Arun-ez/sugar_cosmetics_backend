@@ -154,7 +154,7 @@ const getProductsProgress = async () => {
             { name: "Nails", items: nails, progress: Math.round((nails * 100) / all), path: "/collections/nails" },
             { name: "Skincare", items: skincare, progress: Math.round((skincare * 100) / all), path: "/collections/skincare" },
             { name: "Accessories", items: accessories, progress: Math.round((accessories * 100) / all), path: "/collections/accessories" },
-            { name: "Gifts And Kits", items: kits, progress: Math.round((kits * 100) / all), path: "/collections/kits" },
+            { name: "Gifts And Kits", items: kits, progress: Math.round((kits * 100) / all), path: "/collections/kit" },
             { name: "Best Seller", items: seller, progress: Math.round((seller * 100) / all), path: "/collections/seller" },
             { name: "New Launches", items: newly, progress: Math.round((newly * 100) / all), path: "/collections/new" },
         ]
