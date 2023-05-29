@@ -9,7 +9,7 @@ const getAllProducts = async ({ limit, page }) => {
     try {
         const response = await Product.find().limit(limit || 0).skip(skip);
         const total = await Product.count();
-        return { data: response, page: page || 1, total_pages: Math.ceil(total / limit) || 1 };
+        return { data: response, page: Number(page) || 1, total_pages: Math.ceil(total / limit) || 1 };
     } catch (error) {
         throw new Error(error);
     }
