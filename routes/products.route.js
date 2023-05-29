@@ -5,7 +5,7 @@ const { postProduct, patchProduct, getAllProducts, getProductsByCategory, getPro
 
 router.get('/', async (req, res) => {
     try {
-        const response = await getAllProducts(req.query.limit);
+        const response = await getAllProducts(req.query);
         res.send(response);
     } catch (error) {
         res.status(404).send({ error: error.message });

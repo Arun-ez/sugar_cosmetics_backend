@@ -2,10 +2,14 @@
 const Product = require('../models/Product');
 const User = require('../models/User');
 
-const getAllProducts = async (limit) => {
+const getAllProducts = async ({ limit, page }) => {
+
+    let skip = page && page > 1 ? (page - 1) * (limit || 0) : 0;
+
     try {
-        const response = await Product.find().limit(limit);
-        return { data: response };
+        const response = await Product.find().limit(limit || 0).skip(skip);
+        const total = await Product.count();
+        return { data: response, page: page || 1, total_pages: Math.ceil(total / limit) || 1 };
     } catch (error) {
         throw new Error(error);
     }

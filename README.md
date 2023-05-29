@@ -18,15 +18,16 @@
 | :-------- | :------- | :------------------------- |
 | `N/A` | `N/A` |   `N/A` |
 
-#### Limit number of Products
+#### Limit and Pagination number of Products
 
 ```bash
-  GET /api/products?limit=10
+  GET /api/products?limit=10&page=1
 ```
 
 | query | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `limit` | `number` |   `limit number of response` |
+| `page` | `number` |   `the page you want to access` |
 
 
 #### Post a product
