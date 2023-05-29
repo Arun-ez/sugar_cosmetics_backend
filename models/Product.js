@@ -3,12 +3,12 @@ const { Schema } = require('mongoose');
 
 const ProductSchema = new Schema(
     {
-        Title: {
+        title: {
             type: String,
             required: true
         },
 
-        Title_URL: {
+        source: {
             type: String,
             required: true
         },
@@ -18,14 +18,9 @@ const ProductSchema = new Schema(
             required: true
         },
 
-        isListed: {
-            type: Boolean,
-            default: false
-        },
-
-        Description: {
+        description: {
             type: String,
-            default: ""
+            required: true
         },
 
         price: {
@@ -33,13 +28,9 @@ const ProductSchema = new Schema(
             required: true
         },
 
-        items: {
-            type: String,
-            default: ""
-        },
-
-        brandcolor: {
-            type: String,
+        discount: {
+            type: Number,
+            default: 0
         },
 
         filter: {
@@ -49,7 +40,7 @@ const ProductSchema = new Schema(
 
         rating: {
             type: String,
-            required: true
+            default: "1.0"
         },
 
         category: {
@@ -62,19 +53,19 @@ const ProductSchema = new Schema(
             required: true
         },
 
-        benifts: {
+        benifits: {
             type: Array,
             required: true
         },
 
-        desc: {
-            type: String,
-            required: true
-        },
-
-        qty: {
+        inventory: {
             type: Number,
             default: 0
+        },
+
+        reviews: {
+            type: Array,
+            default: []
         }
     }
 )
