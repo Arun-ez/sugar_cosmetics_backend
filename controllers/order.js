@@ -1,21 +1,19 @@
-const User = require('../models/User');
+const Order = require('../models/Order');
 
 const getOrdersData = async (data) => {
     try {
-        let response = await User.findOne({ email: data.email });
-        return { data: response.orders.reverse() }
+        let response = await Order.find({ email: data.email });
+        return { data: response.reverse() }
     } catch (error) {
         throw new Error(error);
     }
 }
 
 const postOrderData = async (data, paylaod) => {
+
     try {
-        let response = await User.findOne({ email: data.email });
-        let orders = response.orders;
-        orders.push(paylaod);
-        let order_response = await User.updateOne({ email: data.email }, { $set: { orders: orders } });
-        return { success: paylaod }
+        let response = Order.create({ name: paylaod.address.name, email: data.email, ...paylaod })
+        return { success: true }
     } catch (error) {
         throw new Error(error);
     }
