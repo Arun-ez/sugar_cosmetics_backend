@@ -48,7 +48,7 @@ const getFindCriteria = (params, query) => {
         }
     }
 
-    return criteria;
+    return { ...criteria, visibility: true };
 }
 
 const getSortCriteria = (query) => {
@@ -116,7 +116,7 @@ const searchCriteria = (query) => {
         }
     }
 
-    return criteria;
+    return { ...criteria, visibility: true };
 }
 
 const searchProducts = async (query) => {

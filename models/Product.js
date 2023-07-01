@@ -66,6 +66,11 @@ const ProductSchema = new Schema(
         reviews: {
             type: Array,
             default: []
+        },
+
+        visibility: {
+            type: Boolean,
+            default: true
         }
     }
 )
