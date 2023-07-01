@@ -6,6 +6,7 @@ const connect = require('./configs/connect');
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
+app.use("/api/static", require('./routes/static.route'));
 app.use("/api/account", require('./routes/account.route'));
 app.use("/api/products", require('./routes/products.route'));
 app.use("/api/cart", require('./routes/cart.route'));
