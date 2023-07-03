@@ -8,7 +8,7 @@ https://tense-tan-belt.cyclic.app/
 
 ## Related Repositories
 
-- <a href="https://github.com/Arun-ez/SUGAR_COSMETICS-clone"> Frontned </a>
+- <a href="https://github.com/Arun-ez/SUGAR_COSMETICS-clone"> Frontend </a>
 - <a href="https://github.com/Arun-ez/sugar_cosmetics-control_panel"> Control Panel </a>
 
 ## Tech Stack
