@@ -2,16 +2,6 @@
 const Product = require('../models/Product');
 
 const getStaticProducts = async () => {
-    let all = await Product.count({});
-    let lips = await Product.count({ category: "lips" });
-    let eyes = await Product.count({ category: "eyes" });
-    let face = await Product.count({ category: "face" });
-    let nails = await Product.count({ category: "nails" });
-    let skincare = await Product.count({ category: "skincare" });
-    let accessories = await Product.count({ category: "accessories" });
-    let kits = await Product.count({ category: "kit" });
-    let seller = await Product.count({ category: "seller" });
-    let newly = await Product.count({ category: "new" });
 
     const data = [
         { title: 'BESTSELLERS', type: 'seller', data: null },
