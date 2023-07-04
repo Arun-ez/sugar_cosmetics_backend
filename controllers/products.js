@@ -22,7 +22,7 @@ const getProducts = async (query, authorization) => {
     const category = query.category;
     const filter = query.filter?.split('%');
     const sort = possibilities[query.sort];
-    const token = authorization.split(' ')[1];
+    const token = authorization?.split(' ')[1];
 
     const user_data = token ? VerifyToken(token) : null;
 
