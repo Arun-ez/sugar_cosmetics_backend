@@ -40,4 +40,4 @@ const token_validator = async (req, res, next) => {
     next();
 }
 
-module.exports = { token_validator, CreateToken };
+module.exports = { token_validator, CreateToken, VerifyToken };
