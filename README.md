@@ -26,47 +26,13 @@ https://tense-tan-belt.cyclic.app/
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `N/A` | `N/A` |   `N/A` |
-
-#### Limit and Pagination number of Products
-
-```bash
-  GET /api/products?limit=10&page=1
-```
-
-| query | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `limit` | `number` |   `limit number of response` |
-| `page` | `number` |   `the page you want to access` |
-
-
-#### Post a product
-
-```bash
-  POST /api/products?API_KEY=***
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `API_KEY` | `string` |   `API_KEY is Required for this route(contact arunshaw433@gmail.com)` |
-
-
-#### Patch a product
-
-```bash
-  PATCH /api/products?id=***&API_KEY=***id=***
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id` | `string` |   `id is required to patch` |
-| `API_KEY` | `string` |   `API_KEY is Required for this route(contact arunshaw433@gmail.com)` |
+| `Authorization Header` | `Bearer Token` |  `Optional` wishlist status of a user can be retrived by passing this |
 
 
 #### Get Products by category
 
 ```bash
-  GET /api/products/${category}
+  GET /api/products?category=${category}
 ```
 
 | Parameter | Type     | Description                       |
@@ -76,35 +42,31 @@ https://tense-tan-belt.cyclic.app/
 #### Get Single Product by Id
 
 ```bash
-  GET /api/products/${category}/${Id}
+  GET /api/products/${Id}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `category`| `string` | **Required**. category to fetch |
 | `Id`| `string` | **Required**. Id to fetch |
 
-#### Sort Products
+#### Sort Products based on price
 
 ```bash
-  GET /api/products/${category}?sort=price&order=asc
-  GET /api/products/${category}?sort=price&order=dsc
+  GET /api/products?category=${category}?sort=asc
+  GET /api/products?category=${category}?sort==dsc
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `category`| `string` | **Required**. category to fetch |
 | `sort`| `string` | **Required**. sort dependency to fetch |
-| `order`| `string` | **Required**. sort order to fetch |
+
 
 #### Filter Products
 
 ```bash
-  GET /api/products/${category}?filter=Matte
-  GET /api/products/${category}?filter=Matte&filter=liner
+  GET /api/products?category=${category}&filter=any1%any2%any3%any4
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `category`| `string` | **Required**. category to fetch |
 | `filter`| `string` | **Required**. filter value to fetch |
 
 #### Search Products
@@ -119,7 +81,7 @@ https://tense-tan-belt.cyclic.app/
 #### Sort Search Results
 
 ```bash
-  GET /api/products/Search?q=${query}&sort=asc/dsc
+  GET /api/products/search?q=${query}&sort=asc/dsc
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
@@ -129,7 +91,7 @@ https://tense-tan-belt.cyclic.app/
 #### Filter Search Results
 
 ```bash
-  GET /api/products/Search?q=${query}&filter=***&filter=***
+  GET /api/products/search?q=${query}&filter=any1%any2%any3%any4
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |

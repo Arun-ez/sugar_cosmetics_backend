@@ -240,55 +240,39 @@
                 </div>
 
                 <div class="grid-item">
-                    <h4> GET /api/products?limit=10&page=1 </h4>
-                    <p> Limit no of Products and Pagination </p>
+                    <h4> GET /api/products?category=eyes </h4>
+                    <p> Filter based on category </p>
                 </div>
 
                 <div class="grid-item">
-                    <h4> POST /api/products?API_KEY=*** </h4>
-                    <p> Post a new Product(API_KEY required for this route. contact arunshaw433@gmail.com) </p>
+                    <h4> GET /api/products?category=eyes&filter=liner%kajal </h4>
+                    <p> Get Products by their subcategory </p>
                 </div>
 
                 <div class="grid-item">
-                    <h4> PATCH /api/products?API_KEY=***&id=*** </h4>
-                    <p> Patch a product (product id and API_KEY required for this route. contact arunshaw433@gmail.com)
-                    </p>
-                </div>
-
-
-                <div class="grid-item">
-                    <h4> GET /api/products/${category} </h4>
-                    <p> Get Products by category </p>
+                    <h4> GET /api/products?category=lips&sort=asc </h4>
+                    <p> Sort Products by Price Ascending(asc) or Decending(dsc) </p>
                 </div>
 
                 <div class="grid-item">
-                    <h4> GET /api/products/${category}/${Id} </h4>
-                    <p> Get Single Product by Id </p>
+                    <h4> GET /api/products?category=eyes&filter=liner%kajal </h4>
+                    <p> Retrieving the wishlist status for the result ( pass the user auth token in the Authorization
+                        Header as bearer token ) </p>
                 </div>
 
                 <div class="grid-item">
-                    <h4> GET /api/products/${category}?sort=price&order=asc </h4>
-                    <p> Sort Products Ascending(asc) or Decending(dsc) </p>
-                </div>
-
-                <div class="grid-item">
-                    <h4> GET /api/products/${category}?filter=Matte </h4>
-                    <p> Filter Products </p>
-                </div>
-
-                <div class="grid-item">
-                    <h4> GET /api/products/Search?q=${query} </h4>
+                    <h4> GET /api/products/search?q=${query} </h4>
                     <p> Search Products </p>
                 </div>
 
                 <div class="grid-item">
-                    <h4> GET /api/products/Search?q=${query}&sort=asc/dsc </h4>
-                    <p> Sort Search Results based on price </p>
+                    <h4> GET /api/products/Search?q=${query}&sort=asc/dsc&filter=liner%matte </h4>
+                    <p> Sort and filter Search Results </p>
                 </div>
 
                 <div class="grid-item">
-                    <h4> GET /api/products/Search?filter=***&filter=*** </h4>
-                    <p> Filter search results </p>
+                    <h4> GET /api/products/id </h4>
+                    <p> Get product by id </p>
                 </div>
 
             </div>

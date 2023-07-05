@@ -134,7 +134,6 @@ const searchProducts = async (query, authorization) => {
 
         })
 
-
         if (user_data?.data) {
             let { wishlist } = await User.findOne({ email: user_data.data.email }).select('wishlist');
             const status = getWishlistStatus(response, wishlist);
