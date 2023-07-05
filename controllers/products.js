@@ -64,7 +64,9 @@ const getProducts = async (query, authorization) => {
     try {
         const response = await Product.find(find_criteria()).sort(sort || {});
         const filters = (await Product.find({ category }).select('filter')).forEach(({ filter }) => {
-            set.add(filter)
+            if (filter) {
+                set.add(filter);
+            }
         })
 
 
@@ -81,128 +83,92 @@ const getProducts = async (query, authorization) => {
     }
 }
 
+const searchProducts = async (query, authorization) => {
+    const possibilities = { default: {}, asc: { price: 1 }, dsc: { price: -1 } }
 
-const postProduct = async (data) => {
-    try {
-        const response = await Product.create(data);
-        return response;
-    } catch (error) {
-        throw new Error(error);
+    const q = query.q || '';
+    const filter = query.filter?.split('%');
+    const sort = possibilities[query.sort] || {};
+    const token = authorization?.split(' ')[1];
+
+    const user_data = token ? VerifyToken(token) : null;
+
+    const find_criteria = () => {
+
+        const criteria = { $text: { $search: q } }
+
+        if (filter?.length && filter[0] !== "") {
+            criteria.filter = { $in: filter };
+        }
+
+        return criteria;
     }
-}
 
-const patchProduct = async (data, id) => {
-    try {
-        const response = await Product.updateOne({ _id: id }, { $set: { ...data } });
-        return response;
-    } catch (error) {
-        throw new Error(error);
-    }
-}
+    const getWishlistStatus = (data, wishlist) => {
 
-const getFindCriteria = (params, query) => {
-    let criteria = { category: params.category }
+        let result = data.map(({ _id }) => {
 
-    if (query.filter) {
-
-        if (typeof query.filter === "string") {
-            criteria = { ...criteria, filter: query.filter }
-        } else {
-            let arr = query.filter.map((filter) => {
-                return { filter };
+            let track = wishlist.find((useritem) => {
+                return useritem._id == _id;
             })
 
-            criteria = { ...criteria, $or: arr }
-        }
+            if (track) {
+                return true;
+            }
+
+            return false;
+        })
+
+        return result;
     }
 
-    return { ...criteria, visibility: true };
-}
-
-const getSortCriteria = (query) => {
-    let criteria = {};
-
-    if (query.sort) {
-
-        if (typeof query.sort === "string") {
-
-            if (!query.order) {
-                throw new Error('Order not provided');
-            }
-
-            criteria[query.sort] = query.order === "dsc" ? -1 : 1;
-        } else {
-
-            if (!query.order || typeof query.order === "string" || query.order.length < query.sort.length) {
-                throw new Error('Order not provided for some sorting criteria');
-            }
-
-            for (let i = 0; i < query.sort.length; i++) {
-                criteria[query.sort[i]] = query.order[i] === "dsc" ? -1 : 1;
-            }
-        }
-
-    }
-
-    return criteria;
-}
-
-const getProductsByCategory = async (params, query) => {
+    const set = new Set();
 
     try {
-        const find = getFindCriteria(params, query);
-        const sort = getSortCriteria(query);
-        const response = await Product.find(find).sort(sort);
-        return { data: response };
+        const response = await Product.find(find_criteria()).sort(sort);
+        const filters = (await Product.find({ $text: { $search: q } }).select('filter')).forEach(({ filter }) => {
+
+            if (filter) {
+                set.add(filter);
+            }
+
+        })
+
+
+        if (user_data?.data) {
+            let { wishlist } = await User.findOne({ email: user_data.data.email }).select('wishlist');
+            const status = getWishlistStatus(response, wishlist);
+            return { data: response, filters: Array.from(set), wishlist: status };
+        }
+
+        return { data: response, filters: Array.from(set), wishlist: new Array(response.length).fill(false) };
+
     } catch (error) {
         throw new Error(error);
     }
+
 }
 
-const getProductByCategoryAndId = async (category, id) => {
+const getProductId = async (params, authorization) => {
+
+    const token = authorization?.split(' ')[1];
+
+    const user_data = token ? VerifyToken(token) : null;
+
     try {
-        const response = await Product.findOne({ category: category, _id: id });
-        return { data: response };
-    } catch (error) {
-        throw new Error(error);
-    }
-}
+        const response = await Product.findOne({ _id: params.id });
 
-const searchCriteria = (query) => {
-    let criteria = { $text: { $search: query.q } }
-
-    if (query.filter) {
-
-        if (typeof query.filter === "string") {
-            criteria = { ...criteria, filter: query.filter }
-        } else {
-            let arr = query.filter.map((filter) => {
-                return { filter };
-            })
-
-            criteria = { ...criteria, $or: arr }
+        if (user_data?.data) {
+            let status = await User.findOne({ email: user_data.data.email, wishlist: { $elemMatch: { _id: params.id } } })
+            return { data: response, wishlist: status ? true : false };
         }
-    }
 
-    return { ...criteria, visibility: true };
-}
-
-const searchProducts = async (query) => {
-
-    const sort_criteria = {
-        asc: { price: 1 },
-        dsc: { price: -1 }
-    }
-
-    const find_criteria = searchCriteria(query);
-
-    try {
-        const response = await Product.find(find_criteria).sort(sort_criteria[query.sort] || {})
-        return { data: response };
+        return { data: response, wishlist: false };
     } catch (error) {
         throw new Error(error);
     }
 }
 
 
-module.exports = { postProduct, patchProduct, getProducts, getProductsByCategory, getProductByCategoryAndId, searchProducts };
+
+module.exports = { getProducts, getProductId, searchProducts };
