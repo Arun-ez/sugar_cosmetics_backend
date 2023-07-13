@@ -1,9 +1,9 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const app = express();
 const PORT = 8080;
 const connect = require('./configs/connect');
-app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
 app.use("/api/static", require('./routes/static.route'));
@@ -18,7 +18,7 @@ app.use("/api/address", require('./routes/address.route'));
 connect();
 
 app.get('/', (req, res) => {
-    res.sendFile('index.html');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
 app.listen(PORT, () => {

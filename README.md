@@ -4,7 +4,7 @@ Backend services for Sugar Cosmetics Clone
 
 ## Live
 
-https://tense-tan-belt.cyclic.app/
+https://api-sugarcosmetics.vercel.app/
 
 ## Related Repositories
 
