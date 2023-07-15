@@ -20,7 +20,7 @@ const getProducts = async (query, authorization) => {
     const possibilities = { default: {}, asc: { price: 1 }, dsc: { price: -1 } }
 
     const category = query.category;
-    const filter = query.filter?.split('%');
+    const filter = query.filter?.split('.');
     const sort = possibilities[query.sort];
     const token = authorization?.split(' ')[1];
 
@@ -87,7 +87,7 @@ const searchProducts = async (query, authorization) => {
     const possibilities = { default: {}, asc: { price: 1 }, dsc: { price: -1 } }
 
     const q = query.q || '';
-    const filter = query.filter?.split('%');
+    const filter = query.filter?.split('.');
     const sort = possibilities[query.sort] || {};
     const token = authorization?.split(' ')[1];
 
