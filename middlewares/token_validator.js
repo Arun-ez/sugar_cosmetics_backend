@@ -7,6 +7,10 @@ const CreateToken = (data) => {
     return jwt.sign(data, JWT_SECRET_KEY);
 }
 
+const createLimitedToken = (data) => {
+    return jwt.sign(data, JWT_SECRET_KEY, { expiresIn: '10m' });
+}
+
 const VerifyToken = (token) => {
     try {
         const response = jwt.verify(token, JWT_SECRET_KEY);
@@ -40,4 +44,4 @@ const token_validator = async (req, res, next) => {
     next();
 }
 
-module.exports = { token_validator, CreateToken, VerifyToken };
+module.exports = { token_validator, CreateToken, createLimitedToken, VerifyToken };
