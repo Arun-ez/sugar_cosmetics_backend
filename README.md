@@ -154,6 +154,24 @@ https://api-sugarcosmetics.vercel.app/
 | :-------- | :------- | :-------------------------------- |
 | `body`| `json` | **body** should have the properties { email } |
 
+#### Send an otp to an email
+
+```bash
+  POST /api/otp/send
+```
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `body`| `json` | **body** should have the properties { email } |
+
+#### Verify an otp
+
+```bash
+  POST /api/otp/verify
+```
+| Required | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `body`| `json` | **body** should have the properties { email, otp, hashkey } |
+
 
 #### Post a Product to cart data of a user
 
